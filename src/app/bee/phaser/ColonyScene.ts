@@ -275,20 +275,23 @@ export class ColonyScene extends Phaser.Scene {
     const a = this.pack.assets[key],
       width = s.getData("baseWidth");
     if (a && width) s.setDisplaySize(width, (width * a.height) / a.width);
+    if (s.input && s.getData("hitWidth") !== s.frame.realWidth)
+      this.hit(s, s.getData("target"));
   }
   private hit(s: Sprite, target: Target) {
     const key = s.getData("asset") as string,
       a = this.pack.assets[key]!;
-    const shape = a.hitArea ?? FALLBACK_SHAPE,
-      source = s.texture.getSourceImage() as HTMLImageElement;
-    const w = source.width,
-      h = source.height,
+    const shape = a.hitArea ?? FALLBACK_SHAPE;
+    const w = s.frame.realWidth,
+      h = s.frame.realHeight,
       ax = (a.anchor?.x ?? a.width / 2) / a.width,
       ay = (a.anchor?.y ?? a.height) / a.height;
     const polygon = new Phaser.Geom.Polygon(
       shape.map(([x, y]) => ({ x: ax * w + x! * w, y: ay * h + y! * w })),
     );
-    s.setInteractive(polygon, Phaser.Geom.Polygon.Contains);
+    if (s.input) s.input.hitArea = polygon;
+    else s.setInteractive(polygon, Phaser.Geom.Polygon.Contains);
+    s.setData("hitWidth", w);
     s.setData("target", target);
   }
   private setupInput() {
