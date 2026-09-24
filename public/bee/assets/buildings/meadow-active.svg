@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 150" aria-hidden="true"><style>@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes piston {
+  50% {
+    transform: translateY(10px);
+  }
+}
+@keyframes pump {
+  0%,
+  100% {
+    transform: rotate(-9deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes steam {
+  0% {
+    transform: translateY(3px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-17px);
+    opacity: 0;
+  }
+}
+@keyframes breathe {
+  50% {
+    opacity: 0.65;
+  }
+}
+@keyframes wing {
+  50% {
+    transform: scaleY(0.45);
+  }
+}
+@keyframes belt {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+@keyframes hiveGlow {
+  50% {
+    fill: #b78035;
+  }
+}
+@keyframes flowerSway {
+  50% {
+    transform: rotate(5deg);
+  }
+}
+.gear {
+  animation: rotate 4s linear infinite;
+}
+.wheel {
+  animation: rotate 9s linear infinite;
+}
+.piston {
+  animation: piston 1.8s ease-in-out infinite;
+}
+.pumpArm {
+  animation: pump 2s ease-in-out infinite;
+}
+.steam {
+  animation: steam 2.3s ease-out infinite;
+}
+.breathe {
+  animation: breathe 2.6s ease-in-out infinite;
+}
+.wing {
+  animation: wing 0.13s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.beltMotion {
+  animation: belt 1s linear infinite;
+}
+.hiveGlow {
+  animation: hiveGlow 2.4s ease-in-out infinite;
+}
+.flowerSway {
+  animation: flowerSway 3.6s ease-in-out infinite;
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><defs><linearGradient id="gold-meadow" x2=".6" y2="1"><stop stop-color="#f5df93"></stop><stop offset="1" stop-color="#d9ac58"></stop></linearGradient><linearGradient id="wax-meadow" x2=".8" y2="1"><stop stop-color="#e8c472"></stop><stop offset="1" stop-color="#ba8645"></stop></linearGradient></defs><ellipse cx="80" cy="130" rx="59" ry="16" fill="#34543a" opacity=".22"></ellipse><path d="m18 120 59 25 66-27-59-23Z" fill="#a39565"></path><path d="m18 115 59 25 66-27-59-22Z" fill="#c8bd86" stroke="#a99a69" stroke-width="1.5"></path><g class="flowerSway" style="transform-origin:31px 99px;animation-delay:0s"><path d="M31 80v19" stroke="#6b944f" stroke-width="2"></path><circle cx="27" cy="80" r="5" fill="#e7c0b0"></circle><circle cx="35" cy="80" r="5" fill="#e7c0b0"></circle><circle cx="31" cy="76" r="5" fill="#e7c0b0"></circle><circle cx="31" cy="80" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:50px 103px;animation-delay:0.12s"><path d="M50 84v19" stroke="#6b944f" stroke-width="2"></path><circle cx="46" cy="84" r="5" fill="#f4df97"></circle><circle cx="54" cy="84" r="5" fill="#f4df97"></circle><circle cx="50" cy="80" r="5" fill="#f4df97"></circle><circle cx="50" cy="84" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:69px 107px;animation-delay:0.24s"><path d="M69 88v19" stroke="#6b944f" stroke-width="2"></path><circle cx="65" cy="88" r="5" fill="#f4df97"></circle><circle cx="73" cy="88" r="5" fill="#f4df97"></circle><circle cx="69" cy="84" r="5" fill="#f4df97"></circle><circle cx="69" cy="88" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:88px 99px;animation-delay:0.36s"><path d="M88 80v19" stroke="#6b944f" stroke-width="2"></path><circle cx="84" cy="80" r="5" fill="#e7c0b0"></circle><circle cx="92" cy="80" r="5" fill="#e7c0b0"></circle><circle cx="88" cy="76" r="5" fill="#e7c0b0"></circle><circle cx="88" cy="80" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:107px 103px;animation-delay:0.48s"><path d="M107 84v19" stroke="#6b944f" stroke-width="2"></path><circle cx="103" cy="84" r="5" fill="#f4df97"></circle><circle cx="111" cy="84" r="5" fill="#f4df97"></circle><circle cx="107" cy="80" r="5" fill="#f4df97"></circle><circle cx="107" cy="84" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:126px 107px;animation-delay:0.6s"><path d="M126 88v19" stroke="#6b944f" stroke-width="2"></path><circle cx="122" cy="88" r="5" fill="#f4df97"></circle><circle cx="130" cy="88" r="5" fill="#f4df97"></circle><circle cx="126" cy="84" r="5" fill="#f4df97"></circle><circle cx="126" cy="88" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:31px 116px;animation-delay:0.72s"><path d="M31 97v19" stroke="#6b944f" stroke-width="2"></path><circle cx="27" cy="97" r="5" fill="#e7c0b0"></circle><circle cx="35" cy="97" r="5" fill="#e7c0b0"></circle><circle cx="31" cy="93" r="5" fill="#e7c0b0"></circle><circle cx="31" cy="97" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:50px 120px;animation-delay:0.84s"><path d="M50 101v19" stroke="#6b944f" stroke-width="2"></path><circle cx="46" cy="101" r="5" fill="#f4df97"></circle><circle cx="54" cy="101" r="5" fill="#f4df97"></circle><circle cx="50" cy="97" r="5" fill="#f4df97"></circle><circle cx="50" cy="101" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:69px 124px;animation-delay:0.96s"><path d="M69 105v19" stroke="#6b944f" stroke-width="2"></path><circle cx="65" cy="105" r="5" fill="#f4df97"></circle><circle cx="73" cy="105" r="5" fill="#f4df97"></circle><circle cx="69" cy="101" r="5" fill="#f4df97"></circle><circle cx="69" cy="105" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:88px 116px;animation-delay:1.08s"><path d="M88 97v19" stroke="#6b944f" stroke-width="2"></path><circle cx="84" cy="97" r="5" fill="#e7c0b0"></circle><circle cx="92" cy="97" r="5" fill="#e7c0b0"></circle><circle cx="88" cy="93" r="5" fill="#e7c0b0"></circle><circle cx="88" cy="97" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:107px 120px;animation-delay:1.2s"><path d="M107 101v19" stroke="#6b944f" stroke-width="2"></path><circle cx="103" cy="101" r="5" fill="#f4df97"></circle><circle cx="111" cy="101" r="5" fill="#f4df97"></circle><circle cx="107" cy="97" r="5" fill="#f4df97"></circle><circle cx="107" cy="101" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:126px 124px;animation-delay:1.3199999999999998s"><path d="M126 105v19" stroke="#6b944f" stroke-width="2"></path><circle cx="122" cy="105" r="5" fill="#f4df97"></circle><circle cx="130" cy="105" r="5" fill="#f4df97"></circle><circle cx="126" cy="101" r="5" fill="#f4df97"></circle><circle cx="126" cy="105" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:31px 133px;animation-delay:1.44s"><path d="M31 114v19" stroke="#6b944f" stroke-width="2"></path><circle cx="27" cy="114" r="5" fill="#e7c0b0"></circle><circle cx="35" cy="114" r="5" fill="#e7c0b0"></circle><circle cx="31" cy="110" r="5" fill="#e7c0b0"></circle><circle cx="31" cy="114" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:50px 137px;animation-delay:1.56s"><path d="M50 118v19" stroke="#6b944f" stroke-width="2"></path><circle cx="46" cy="118" r="5" fill="#f4df97"></circle><circle cx="54" cy="118" r="5" fill="#f4df97"></circle><circle cx="50" cy="114" r="5" fill="#f4df97"></circle><circle cx="50" cy="118" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:69px 141px;animation-delay:1.68s"><path d="M69 122v19" stroke="#6b944f" stroke-width="2"></path><circle cx="65" cy="122" r="5" fill="#f4df97"></circle><circle cx="73" cy="122" r="5" fill="#f4df97"></circle><circle cx="69" cy="118" r="5" fill="#f4df97"></circle><circle cx="69" cy="122" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:88px 133px;animation-delay:1.7999999999999998s"><path d="M88 114v19" stroke="#6b944f" stroke-width="2"></path><circle cx="84" cy="114" r="5" fill="#e7c0b0"></circle><circle cx="92" cy="114" r="5" fill="#e7c0b0"></circle><circle cx="88" cy="110" r="5" fill="#e7c0b0"></circle><circle cx="88" cy="114" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:107px 137px;animation-delay:1.92s"><path d="M107 118v19" stroke="#6b944f" stroke-width="2"></path><circle cx="103" cy="118" r="5" fill="#f4df97"></circle><circle cx="111" cy="118" r="5" fill="#f4df97"></circle><circle cx="107" cy="114" r="5" fill="#f4df97"></circle><circle cx="107" cy="118" r="3" fill="#c39142"></circle></g><g class="flowerSway" style="transform-origin:126px 141px;animation-delay:2.04s"><path d="M126 122v19" stroke="#6b944f" stroke-width="2"></path><circle cx="122" cy="122" r="5" fill="#f4df97"></circle><circle cx="130" cy="122" r="5" fill="#f4df97"></circle><circle cx="126" cy="118" r="5" fill="#f4df97"></circle><circle cx="126" cy="122" r="3" fill="#c39142"></circle></g></svg>

@@ -1,0 +1,612 @@
+{
+  "version": 1,
+  "assets": {
+    "building.wild": {
+      "src": "buildings/wild.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/wild-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.hive": {
+      "src": "buildings/hive.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/hive-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.meadow": {
+      "src": "buildings/meadow.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/meadow-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.depot": {
+      "src": "buildings/depot.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/depot-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.nursery": {
+      "src": "buildings/nursery.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/nursery-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.logging": {
+      "src": "buildings/logging.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/logging-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.workshop": {
+      "src": "buildings/workshop.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/workshop-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.press": {
+      "src": "buildings/press.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/press-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.market": {
+      "src": "buildings/market.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/market-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.sawmill": {
+      "src": "buildings/sawmill.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/sawmill-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.pump": {
+      "src": "buildings/pump.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/pump-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.sanctuary": {
+      "src": "buildings/sanctuary.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/sanctuary-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.waterwheel": {
+      "src": "buildings/waterwheel.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/waterwheel-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.well": {
+      "src": "buildings/well.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/well-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.boiler": {
+      "src": "buildings/boiler.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/boiler-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.mine": {
+      "src": "buildings/mine.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/mine-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.smelter": {
+      "src": "buildings/smelter.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/smelter-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.dynamo": {
+      "src": "buildings/dynamo.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/dynamo-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.powerplant": {
+      "src": "buildings/powerplant.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/powerplant-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.centrifuge": {
+      "src": "buildings/centrifuge.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/centrifuge-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "building.relay": {
+      "src": "buildings/relay.svg",
+      "width": 160,
+      "height": 150,
+      "activeSrc": "buildings/relay-active.svg",
+      "anchor": {
+        "x": 80,
+        "y": 126
+      }
+    },
+    "icon.nectar": {
+      "src": "icons/nectar.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.water": {
+      "src": "icons/water.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.planks": {
+      "src": "icons/planks.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.gears": {
+      "src": "icons/gears.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.ore": {
+      "src": "icons/ore.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.copper": {
+      "src": "icons/copper.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.honey": {
+      "src": "icons/honey.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.wood": {
+      "src": "icons/wood.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.wax": {
+      "src": "icons/wax.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.bee": {
+      "src": "icons/bee.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.hammer": {
+      "src": "icons/hammer.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.leaf": {
+      "src": "icons/leaf.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.road": {
+      "src": "icons/road.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.up": {
+      "src": "icons/up.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.move": {
+      "src": "icons/move.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.pause": {
+      "src": "icons/pause.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.play": {
+      "src": "icons/play.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.close": {
+      "src": "icons/close.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.check": {
+      "src": "icons/check.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.back": {
+      "src": "icons/back.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.coin": {
+      "src": "icons/coin.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.flask": {
+      "src": "icons/flask.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.axe": {
+      "src": "icons/axe.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.plus": {
+      "src": "icons/plus.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.minus": {
+      "src": "icons/minus.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.target": {
+      "src": "icons/target.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.info": {
+      "src": "icons/info.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.trash": {
+      "src": "icons/trash.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.star": {
+      "src": "icons/star.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.lock": {
+      "src": "icons/lock.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.clock": {
+      "src": "icons/clock.svg",
+      "width": 24,
+      "height": 24
+    },
+    "icon.settings": {
+      "src": "icons/settings.svg",
+      "width": 24,
+      "height": 24
+    },
+    "terrain.tree": {
+      "src": "terrain/tree.svg",
+      "width": 160,
+      "height": 180,
+      "anchor": {
+        "x": 80,
+        "y": 146
+      },
+      "hitArea": [
+        [
+          -0.36,
+          -0.72
+        ],
+        [
+          0,
+          -0.93
+        ],
+        [
+          0.37,
+          -0.73
+        ],
+        [
+          0.45,
+          -0.35
+        ],
+        [
+          0.13,
+          -0.07
+        ],
+        [
+          -0.17,
+          -0.07
+        ],
+        [
+          -0.45,
+          -0.35
+        ]
+      ]
+    },
+    "terrain.rock": {
+      "src": "terrain/rock.png",
+      "width": 100,
+      "height": 80,
+      "anchor": {
+        "x": 50,
+        "y": 54
+      }
+    },
+    "terrain.grass1": {
+      "src": "terrain/grass-1.svg",
+      "width": 76,
+      "height": 44
+    },
+    "terrain.grass2": {
+      "src": "terrain/grass-2.svg",
+      "width": 76,
+      "height": 44
+    },
+    "terrain.grass3": {
+      "src": "terrain/grass-3.svg",
+      "width": 76,
+      "height": 44
+    },
+    "terrain.water": {
+      "src": "terrain/water.svg",
+      "width": 76,
+      "height": 44
+    },
+    "terrain.hidden": {
+      "src": "terrain/hidden.svg",
+      "width": 76,
+      "height": 44
+    },
+    "terrain.flowers": {
+      "src": "terrain/flowers.svg",
+      "width": 30,
+      "height": 24
+    },
+    "terrain.stump": {
+      "src": "terrain/stump.svg",
+      "width": 44,
+      "height": 32,
+      "anchor": {
+        "x": 22,
+        "y": 23
+      }
+    },
+    "terrain.forest": {
+      "src": "terrain/forest.svg",
+      "width": 112,
+      "height": 94
+    },
+    "terrain.fog": {
+      "src": "terrain/fog.svg",
+      "width": 456,
+      "height": 264
+    },
+    "bee.forager": {
+      "src": "bees/forager.svg",
+      "width": 36,
+      "height": 32,
+      "anchor": {
+        "x": 17,
+        "y": 16
+      },
+      "activeSrc": "bees/forager-flight.svg"
+    },
+    "bee.carrier": {
+      "src": "bees/carrier.svg",
+      "width": 36,
+      "height": 32,
+      "anchor": {
+        "x": 17,
+        "y": 16
+      },
+      "activeSrc": "bees/carrier-flight.svg"
+    },
+    "bee.engineer": {
+      "src": "bees/engineer.svg",
+      "width": 36,
+      "height": 32,
+      "anchor": {
+        "x": 17,
+        "y": 16
+      },
+      "activeSrc": "bees/engineer-flight.svg"
+    },
+    "bee.forester": {
+      "src": "bees/forester.svg",
+      "width": 36,
+      "height": 32,
+      "anchor": {
+        "x": 17,
+        "y": 16
+      },
+      "activeSrc": "bees/forester-flight.svg"
+    },
+    "bee.builder": {
+      "src": "bees/builder.svg",
+      "width": 36,
+      "height": 32,
+      "anchor": {
+        "x": 17,
+        "y": 16
+      },
+      "activeSrc": "bees/builder-flight.svg"
+    },
+    "cargo.nectar": {
+      "src": "cargo/nectar.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.honey": {
+      "src": "cargo/honey.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.wood": {
+      "src": "cargo/wood.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.wax": {
+      "src": "cargo/wax.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.planks": {
+      "src": "cargo/planks.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.gears": {
+      "src": "cargo/gears.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.ore": {
+      "src": "cargo/ore.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.copper": {
+      "src": "cargo/copper.svg",
+      "width": 16,
+      "height": 18
+    },
+    "cargo.water": {
+      "src": "cargo/water.svg",
+      "width": 16,
+      "height": 18
+    },
+    "effect.axe": {
+      "src": "effects/axe.svg",
+      "width": 32,
+      "height": 32
+    },
+    "effect.chips": {
+      "src": "effects/chips.svg",
+      "width": 32,
+      "height": 32
+    },
+    "effect.scaffold": {
+      "src": "effects/scaffold.svg",
+      "width": 96,
+      "height": 66
+    },
+    "effect.missing": {
+      "src": "effects/missing.svg",
+      "width": 48,
+      "height": 48
+    },
+    "route.flight": {
+      "src": "routes/flight.svg",
+      "width": 24,
+      "height": 16
+    },
+    "route.belt": {
+      "src": "routes/belt.svg",
+      "width": 24,
+      "height": 16
+    },
+    "route.shaft": {
+      "src": "routes/shaft.svg",
+      "width": 24,
+      "height": 16
+    },
+    "route.wire": {
+      "src": "routes/wire.svg",
+      "width": 24,
+      "height": 16
+    },
+    "route.pipe": {
+      "src": "routes/pipe.svg",
+      "width": 24,
+      "height": 16
+    }
+  }
+}

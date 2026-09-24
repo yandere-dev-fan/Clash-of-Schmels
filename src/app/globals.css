@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+button,
+select {
+  font: inherit;
+}
+button {
+  border: 0;
+}
+a {
+  color: inherit;
+}
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+:root {
+  --font-geist-sans: Arial;
+}

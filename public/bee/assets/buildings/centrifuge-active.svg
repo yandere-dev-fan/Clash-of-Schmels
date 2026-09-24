@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 150" aria-hidden="true"><style>@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes piston {
+  50% {
+    transform: translateY(10px);
+  }
+}
+@keyframes pump {
+  0%,
+  100% {
+    transform: rotate(-9deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes steam {
+  0% {
+    transform: translateY(3px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-17px);
+    opacity: 0;
+  }
+}
+@keyframes breathe {
+  50% {
+    opacity: 0.65;
+  }
+}
+@keyframes wing {
+  50% {
+    transform: scaleY(0.45);
+  }
+}
+@keyframes belt {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+@keyframes hiveGlow {
+  50% {
+    fill: #b78035;
+  }
+}
+@keyframes flowerSway {
+  50% {
+    transform: rotate(5deg);
+  }
+}
+.gear {
+  animation: rotate 4s linear infinite;
+}
+.wheel {
+  animation: rotate 9s linear infinite;
+}
+.piston {
+  animation: piston 1.8s ease-in-out infinite;
+}
+.pumpArm {
+  animation: pump 2s ease-in-out infinite;
+}
+.steam {
+  animation: steam 2.3s ease-out infinite;
+}
+.breathe {
+  animation: breathe 2.6s ease-in-out infinite;
+}
+.wing {
+  animation: wing 0.13s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.beltMotion {
+  animation: belt 1s linear infinite;
+}
+.hiveGlow {
+  animation: hiveGlow 2.4s ease-in-out infinite;
+}
+.flowerSway {
+  animation: flowerSway 3.6s ease-in-out infinite;
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><defs><linearGradient id="gold-centrifuge" x2=".6" y2="1"><stop stop-color="#f5df93"></stop><stop offset="1" stop-color="#d9ac58"></stop></linearGradient><linearGradient id="wax-centrifuge" x2=".8" y2="1"><stop stop-color="#e8c472"></stop><stop offset="1" stop-color="#ba8645"></stop></linearGradient></defs><ellipse cx="80" cy="130" rx="59" ry="16" fill="#34543a" opacity=".22"></ellipse><path d="m18 120 59 25 66-27-59-23Z" fill="#a39565"></path><path d="m18 115 59 25 66-27-59-22Z" fill="#c8bd86" stroke="#a99a69" stroke-width="1.5"></path><g><g><path d="M41 123v9q38 18 76 0v-9Z" fill="url(#wax-centrifuge)" stroke="#ac793d" stroke-width="1.5"></path><ellipse cx="79" cy="123" rx="38" ry="15.200000000000001" fill="url(#gold-centrifuge)" stroke="#bc8e48" stroke-width="1.4"></ellipse></g><g><path d="M41 112v9q38 18 76 0v-9Z" fill="url(#wax-centrifuge)" stroke="#ac793d" stroke-width="1.5"></path><ellipse cx="79" cy="112" rx="38" ry="15.200000000000001" fill="url(#gold-centrifuge)" stroke="#bc8e48" stroke-width="1.4"></ellipse></g><g><path d="M41 101v9q38 18 76 0v-9Z" fill="url(#wax-centrifuge)" stroke="#ac793d" stroke-width="1.5"></path><ellipse cx="79" cy="101" rx="38" ry="15.200000000000001" fill="url(#gold-centrifuge)" stroke="#bc8e48" stroke-width="1.4"></ellipse></g></g><path d="M47 99V47h69v54" stroke="#8faba0" stroke-width="9" fill="none"></path><path d="M80 47v28" stroke="#aab8a0" stroke-width="7"></path><g class="piston"><ellipse cx="80" cy="88" rx="34" ry="13" fill="#c4b77d" stroke="#8c8257" stroke-width="3"></ellipse><path d="M80 76v13" stroke="#8fa897" stroke-width="8"></path></g><g class="gear" style="transform-origin:116px 82px"><circle cx="116" cy="82" r="14" fill="#8b6650" stroke="#d5b476" stroke-width="5"></circle><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(0 116 82)"></path><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(45 116 82)"></path><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(90 116 82)"></path><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(135 116 82)"></path><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(180 116 82)"></path><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(225 116 82)"></path><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(270 116 82)"></path><path d="M116 64v8" stroke="#b58b58" stroke-width="6" transform="rotate(315 116 82)"></path><circle cx="116" cy="82" r="6.72" fill="#d0d6b2"></circle><circle cx="116" cy="82" r="4" fill="#715343"></circle></g><path d="m42 74 17-17-4 15h10l-18 22 4-17Z" fill="#e6ce6d"></path></svg>
