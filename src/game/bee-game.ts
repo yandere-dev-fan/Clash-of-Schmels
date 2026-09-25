@@ -1385,12 +1385,12 @@ function tick(s: BeeState, at: number) {
     .filter((u) => u.role === "forester" && !u.job)
     .slice(reservedForesters)) {
     const station = ready
-      .filter((b) => b.kind === "logging" && room(s, b, "wood") >= 3)
+      .filter((b) => b.kind === "logging" && room(s, b, "wood") > 0)
       .find((b) =>
         nearbyTiles(b, 6).some(
           (t) =>
             discovered(s, t % MAP_SIZE, Math.floor(t / MAP_SIZE)) &&
-            availableTree(s, t) >= 12 &&
+            availableTree(s, t) > 0 &&
             !occupied(s, t),
         ),
       );
@@ -1398,10 +1398,16 @@ function tick(s: BeeState, at: number) {
     const t = nearbyTiles(station, 6).find(
       (t) =>
         discovered(s, t % MAP_SIZE, Math.floor(t / MAP_SIZE)) &&
-        availableTree(s, t) >= 12 &&
+        availableTree(s, t) > 0 &&
         !occupied(s, t),
     )!;
     if (t === undefined) continue;
+    const harvestHealth = Math.min(
+        12,
+        availableTree(s, t),
+        room(s, station, "wood") * 4,
+      ),
+      harvestWood = harvestHealth / 4;
     const harvestJob = dispatch(
       s,
       bee,
@@ -1409,7 +1415,7 @@ function tick(s: BeeState, at: number) {
       0,
       station.id,
       "wood",
-      3,
+      harvestWood,
       [
         bee.at ?? center(station),
         { x: t % MAP_SIZE, y: Math.floor(t / MAP_SIZE) },
@@ -1418,7 +1424,7 @@ function tick(s: BeeState, at: number) {
       at,
       6,
     );
-    harvestJob.harvest = { tile: t, health: 12, picked: false };
+    harvestJob.harvest = { tile: t, health: harvestHealth, picked: false };
   }
   const transportPower = networks(s);
   const cursor = (s.transportCursor ?? 0) % Math.max(1, s.links.length);

@@ -472,6 +472,26 @@ test("forester reserves a tree, chops only on arrival and delivers only on retur
   );
 });
 
+test("forester removes a tree remnant smaller than one normal chop", () => {
+  let s = funded();
+  s.buildings[0]!.enabled = false;
+  const station = add(s, "logging", 24, 21),
+    tile = index(25, 20);
+  s.forest[tile] = 1;
+  unit(s, "forester");
+  s = advance(s, noon + 2000);
+  const job = s.jobs.find((candidate) => candidate.role === "forester")!;
+  assert.equal(job.harvest?.health, 1);
+  assert.equal(job.amount, 0.25);
+  s = advance(s, job.pickupAt);
+  assert.equal(s.forest[tile], 0);
+  s = advance(s, job.readyAt);
+  assert.equal(
+    s.buildings.find((building) => building.id === station.id)!.stock.wood,
+    0.25,
+  );
+});
+
 test("building notices identify production and delivery and keep a bounded tail", () => {
   let s = act(initialState(noon), { type: "breed" }, noon).state;
   s = advance(s, noon + 180000);
