@@ -1,4 +1,12 @@
-import type { BeeState, BuildingKind, Job, Resource } from "@/lib/bee";
+import {
+  RESOURCES,
+  storageLimit,
+  type BeeState,
+  type Building,
+  type BuildingKind,
+  type Job,
+  type Resource,
+} from "@/lib/bee";
 export interface Placement {
   kind: BuildingKind | "plant";
   x: number;
@@ -39,6 +47,27 @@ export const RESOURCE_COLORS: Record<Resource, string> = {
   copper: "#be8965",
   water: "#86b8ba",
 };
+export type BuildingLoadState = "normal" | "empty" | "full";
+export function buildingLoadState(
+  building: Building,
+  reason = "",
+): BuildingLoadState {
+  if (
+    reason === "Выход заполнен" ||
+    RESOURCES.some(
+      (resource) =>
+        building.stock[resource] > 0 &&
+        building.stock[resource] >= storageLimit(building, resource) - 1e-8,
+    )
+  )
+    return "full";
+  if (
+    reason === "Нет сырья" ||
+    RESOURCES.every((resource) => building.stock[resource] <= 1e-8)
+  )
+    return "empty";
+  return "normal";
+}
 export function sample(job: Job, at: number) {
   const p = job.path;
   if (p.length < 2) return p[0] ?? { x: 0, y: 0 };

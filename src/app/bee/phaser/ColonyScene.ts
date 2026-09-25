@@ -12,9 +12,18 @@ import {
   placementError,
   production,
   networks,
+  type BuildingNotice,
 } from "@/lib/bee";
 import type { Pack, Asset } from "../Artwork";
-import { point, cell, sample, lerp, type ValleyProps } from "./model";
+import {
+  point,
+  cell,
+  sample,
+  lerp,
+  buildingLoadState,
+  type BuildingLoadState,
+  type ValleyProps,
+} from "./model";
 
 type Sprite = Phaser.GameObjects.Sprite;
 type Target = { tile?: number; building?: number };
@@ -70,6 +79,10 @@ export class ColonyScene extends Phaser.Scene {
   private suppressTap = false;
   private reduced = false;
   private blobUrls: string[] = [];
+  private notificationsPrimed = false;
+  private seenNoticeId = 0;
+  private loadStates = new Map<number, BuildingLoadState>();
+  private noticeStacks = new Map<number, number>();
   constructor(read: () => ValleyProps, pack: Pack, onReady: () => void) {
     super("Colony");
     this.read = read;
@@ -907,6 +920,99 @@ export class ColonyScene extends Phaser.Scene {
         .setDepth(9003),
     );
   }
+  private popup(
+    buildingId: number,
+    label: string,
+    tone: "resource" | "empty" | "full",
+    resource?: BuildingNotice["resource"],
+  ) {
+    const building = this.read().state.buildings.find(
+      (candidate) => candidate.id === buildingId,
+    );
+    if (!building) return;
+    const position = point(center(building).x, center(building).y),
+      stack = this.noticeStacks.get(buildingId) ?? 0,
+      width = Math.max(72, label.length * 6.4 + (resource ? 29 : 20)),
+      fill =
+        tone === "full" ? 0x6f8a52 : tone === "empty" ? 0x8b6752 : 0x43583c,
+      border = tone === "resource" ? 0xf0d68c : 0xf4e4b0,
+      container = this.add
+        .container(position.x, position.y - 88 - Math.min(stack, 2) * 26)
+        .setDepth(11000),
+      panel = this.add.graphics();
+    panel
+      .fillStyle(fill, 0.96)
+      .fillRoundedRect(-width / 2, -12, width, 24, 10)
+      .lineStyle(1.5, border, 0.9)
+      .strokeRoundedRect(-width / 2, -12, width, 24, 10);
+    container.add(panel);
+    if (resource) {
+      const icon = this.art(`cargo.${resource}`, -width / 2 + 14, 4, 14, 0);
+      container.add(icon);
+    }
+    container.add(
+      this.add
+        .text(resource ? 4 : 0, 0, label, {
+          fontFamily: "Arial",
+          fontSize: "11px",
+          fontStyle: "bold",
+          color: "#fff5d2",
+        })
+        .setOrigin(0.5),
+    );
+    this.noticeStacks.set(buildingId, stack + 1);
+    this.tweens.add({
+      targets: container,
+      y: container.y - 24,
+      alpha: 0,
+      delay: this.reduced ? 700 : 1250,
+      duration: this.reduced ? 120 : 650,
+      ease: "Sine.easeIn",
+      onComplete: () => {
+        container.destroy(true);
+        const left = Math.max(0, (this.noticeStacks.get(buildingId) ?? 1) - 1);
+        if (left) this.noticeStacks.set(buildingId, left);
+        else this.noticeStacks.delete(buildingId);
+      },
+    });
+  }
+  private syncNotifications(p: ValleyProps) {
+    const notices = p.state.notices ?? [],
+      states = new Map<number, BuildingLoadState>();
+    for (const building of p.state.buildings) {
+      const rate = this.rates.find((candidate) => candidate.id === building.id),
+        state = buildingLoadState(building, rate?.reason);
+      states.set(building.id, state);
+    }
+    if (!this.notificationsPrimed) {
+      this.notificationsPrimed = true;
+      this.seenNoticeId = Math.max(0, ...notices.map((notice) => notice.id));
+      this.loadStates = states;
+      return;
+    }
+    const grouped = new Map<string, BuildingNotice>();
+    for (const notice of notices) {
+      if (notice.id <= this.seenNoticeId) continue;
+      const key = `${notice.building}:${notice.kind}:${notice.resource}`,
+        previous = grouped.get(key);
+      if (previous) previous.amount += notice.amount;
+      else grouped.set(key, { ...notice });
+      this.seenNoticeId = Math.max(this.seenNoticeId, notice.id);
+    }
+    for (const notice of grouped.values())
+      this.popup(
+        notice.building,
+        `${notice.kind === "produced" ? "Создано" : "Доставлено"} +${notice.amount}`,
+        "resource",
+        notice.resource,
+      );
+    for (const [building, state] of states) {
+      const previous = this.loadStates.get(building);
+      if (previous !== undefined && previous !== state && state !== "normal")
+        this.popup(building, state === "full" ? "Заполнено" : "Пусто", state);
+    }
+    this.loadStates = states;
+  }
   private drawProgress(p: ValleyProps, at: number) {
     const g = this.progress.clear(),
       bar = (x: number, y: number, f: number) => {
@@ -946,6 +1052,7 @@ export class ColonyScene extends Phaser.Scene {
       this.syncGround(p);
       this.syncTrees(p);
       this.syncBuildings(p);
+      this.syncNotifications(p);
       this.syncRoutes(p);
       this.drawOverlay(p, at);
       this.lastState = p;

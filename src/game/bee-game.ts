@@ -455,6 +455,14 @@ export interface Job {
   readyAt: number;
   harvest?: { tile: number; health: number; picked: boolean };
 }
+export interface BuildingNotice {
+  id: number;
+  building: number;
+  kind: "produced" | "delivered";
+  resource: Resource;
+  amount: number;
+  at: number;
+}
 export interface BeeState extends Stock {
   version: 3;
   /** Missing/zero keeps the original hand-authored valley. */
@@ -470,6 +478,9 @@ export interface BeeState extends Stock {
   nextId: number;
   nextJobId: number;
   nextBeeId: number;
+  /** A short authoritative event tail for world-space feedback. */
+  notices?: BuildingNotice[];
+  nextNoticeId?: number;
   transportCursor?: number;
   era: number;
   createdAt: number;
@@ -529,6 +540,39 @@ export type BeeAction =
 export class BeeRuleError extends Error {}
 export const emptyStock = (): Stock =>
   Object.fromEntries(RESOURCES.map((k) => [k, 0])) as Stock;
+function buildingNotice(
+  s: BeeState,
+  building: number,
+  kind: BuildingNotice["kind"],
+  resource: Resource,
+  amount: number,
+  at: number,
+) {
+  if (amount <= 0 || !building) return;
+  const notices = (s.notices ??= []),
+    previous = notices.at(-1);
+  if (
+    previous?.building === building &&
+    previous.kind === kind &&
+    previous.resource === resource &&
+    at === previous.at
+  ) {
+    previous.amount += amount;
+    previous.at = at;
+  } else {
+    const id = s.nextNoticeId ?? 1;
+    s.nextNoticeId = id + 1;
+    notices.push({
+      id,
+      building,
+      kind,
+      resource,
+      amount,
+      at,
+    });
+  }
+  if (notices.length > 32) notices.splice(0, notices.length - 32);
+}
 export const index = (x: number, y: number) => y * MAP_SIZE + x;
 export const dayKey = (now: number) => new Date(now).toISOString().slice(0, 10);
 export const noise = (x: number, y: number, seed = 0) => {
@@ -690,6 +734,8 @@ export function initialState(now: number, seed = 0): BeeState {
     nextId: 1,
     nextJobId: 1,
     nextBeeId: 1,
+    notices: [],
+    nextNoticeId: 1,
     era: 1,
     createdAt: now,
     clock: now,
@@ -1205,8 +1251,10 @@ function finish(s: BeeState, at: number) {
   }
   for (const job of s.jobs.filter((j) => j.readyAt <= at)) {
     const target = s.buildings.find((b) => b.id === job.to);
-    if (target) target.stock[job.resource] += job.amount;
-    else putBank(s, job.resource, job.amount);
+    if (target) {
+      target.stock[job.resource] += job.amount;
+      buildingNotice(s, target.id, "delivered", job.resource, job.amount, at);
+    } else putBank(s, job.resource, job.amount);
     const bee = s.units.find((u) => u.id === job.bee);
     if (bee) {
       bee.job = null;
@@ -1238,6 +1286,8 @@ function tick(s: BeeState, at: number) {
       b.stock[r as Resource] = Math.max(0, b.stock[r as Resource] - n);
     for (const [r, n] of Object.entries(recipe.output))
       b.stock[r as Resource] += n;
+    for (const [r, n] of Object.entries(recipe.output))
+      buildingNotice(s, b.id, "produced", r as Resource, n, at);
     s.totalHoney += recipe.output.honey ?? 0;
     if (b.kind === "pump") {
       let left = 4;

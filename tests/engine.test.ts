@@ -461,6 +461,39 @@ test("forester reserves a tree, chops only on arrival and delivers only on retur
   assert.equal(s.buildings.find((b) => b.id === station.id)!.stock.wood, 0);
   s = advance(s, job.readyAt);
   assert.equal(s.buildings.find((b) => b.id === station.id)!.stock.wood, 3);
+  assert.ok(
+    s.notices?.some(
+      (notice) =>
+        notice.building === station.id &&
+        notice.kind === "delivered" &&
+        notice.resource === "wood" &&
+        notice.amount === 3,
+    ),
+  );
+});
+
+test("building notices identify production and delivery and keep a bounded tail", () => {
+  let s = act(initialState(noon), { type: "breed" }, noon).state;
+  s = advance(s, noon + 180000);
+  assert.ok(
+    s.notices?.some(
+      (notice) =>
+        notice.building === 1 &&
+        notice.kind === "delivered" &&
+        notice.resource === "nectar",
+    ),
+  );
+  assert.ok(
+    s.notices?.some(
+      (notice) =>
+        notice.building === 1 &&
+        notice.kind === "produced" &&
+        notice.resource === "honey",
+    ),
+  );
+  s = advance(s, noon + 3600000);
+  assert.ok((s.notices?.length ?? 0) <= 32);
+  assert.ok((s.nextNoticeId ?? 0) > 32);
 });
 
 test("manual clearing flies, harvests, returns cargo and releases its forester", () => {
